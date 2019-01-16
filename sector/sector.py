@@ -1,10 +1,15 @@
 class Sector(object):
     def __init__(self):
-        pass
+        self.data = None
+        self.graph = None
+        self.title = None
+        self.currency = None
 
 class Github(Sector):
     def __init__(self):
-        pass
+        super(Sector, self).__init__()
+        self.github_url = None
+        self.github_api = None
 
 class Market(Sector):
     def __init__(self):
