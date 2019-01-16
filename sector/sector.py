@@ -4,12 +4,15 @@ class Sector(object):
         self.graph = None
         self.title = None
         self.currency = None
+        self.gini = None
 
-class Github(Sector):
-    def __init__(self):
-        super(Sector, self).__init__()
-        self.github_url = None
-        self.github_api = None
+    def get_gini(self):
+        if self.gini:
+            return self.gini
+
+    def get_graph_url(self):
+        if self.graph:
+            return self.graph
 
 class Market(Sector):
     def __init__(self):
