@@ -1,22 +1,18 @@
 class Sector(object):
     def __init__(self):
         self.data = None
-        self.graph = None
+        self.plot = None
         self.title = None
         self.currency = None
         self.gini = None
 
-    def get_gini(self):
+    def get_gini_coefficient(self):
         if self.gini:
             return self.gini
 
-    def get_graph_url(self):
-        if self.graph:
-            return self.graph
-
-class Market(Sector):
-    def __init__(self):
-        pass
+    def get_plot_url(self):
+        if self.plot:
+            return self.plot
 
 class Geography(Sector):
     def __init__(self):
