@@ -32,5 +32,3 @@ class Repository(Sector):
         lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api, self.contributor_data, file_name)
         plot_url = lorenz_object.plotly_url()
         return plot_url
-
-

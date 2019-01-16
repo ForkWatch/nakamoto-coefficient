@@ -5,6 +5,7 @@ import json
 
 class Geography(Sector):
     def __init__(self):
+        super(Sector, self).__init__()
         ether_test = (self.currency == 'ETC') || (self.currency == 'ETH') 
         if ether_test:
             self.generate_evm_geo_data()
@@ -33,7 +34,7 @@ class Geography(Sector):
 		self.gini = gini_object.get_gini()
 		self.plot = self.generate_lorenz_curve()
 
-	def generate_lorenz_curve(self):
+    def generate_lorenz_curve(self):
         file_name = f'{self.currency}_country_gini_{self.uuid}'
         lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api, self.contributor_data, file_name)
         plot_url = lorenz_object.plotly_url()
