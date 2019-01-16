@@ -28,7 +28,7 @@ class Repository(Sector):
         self.plot = self.generate_lorenz_curve()
 
     def generate_lorenz_curve(self):
-        file_name = f'{self.currency}_repositor_gini_{self.uuid}'
+        file_name = f'{self.currency}_repository_gini_{self.uuid}'
         lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api, self.contributor_data, file_name)
         plot_url = lorenz_object.plotly_url()
         return plot_url
