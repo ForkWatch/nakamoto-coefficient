@@ -1,5 +1,5 @@
-from sector import Sector
-from analysis import Gini, LorenzPlot
+from .sector import Sector
+from .analysis import Gini, LorenzPlot
 from github import Github
 import re
 

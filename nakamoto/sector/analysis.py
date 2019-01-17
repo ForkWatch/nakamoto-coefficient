@@ -2,6 +2,7 @@ from decimal import Decimal
 import plotly
 import plotly.plotly as py
 import plotly.graph_objs as go
+import numpy as np
 
 class Gini(object):
     def __init__(self, data_array):
@@ -12,8 +13,8 @@ class Gini(object):
         n = len(self.data_array)
         coefficient = Decimal(2. / n)
         constant = Decimal((n + 1.) / n)
-        weighted_sum = sum([(index + 1) * item for index, item in enumerate(contributor_array)])
-        gini = coef_*weighted_sum/(contributor_array.sum()) - const_
+        weighted_sum = sum([(index + 1) * item for index, item in enumerate(self.data_array)])
+        gini = coefficient * weighted_sum / (self.data_array.sum()) - constant
         return gini
 
     def get_gini(self):
@@ -29,13 +30,13 @@ class LorenzPlot(object):
         self.plotly_url = self.get_plot_url()
 
     def generate_lorenz_curve(self):
-        data_copy = data_array.copy()
+        data_copy = self.data_array.copy()
         lorenz = data_copy.cumsum() / data_copy.sum()
         lorenz = np.insert(lorenz, 0, 0)
         lorenz = lorenz.astype(float)
         return lorenz
 
-    def plotly_url(self):
+    def get_plot_url(self):
         plotly.tools.set_credentials_file(username=self.plotly_username, api_key=self.plotly_api_key)
 
         trace = go.Scattergl(

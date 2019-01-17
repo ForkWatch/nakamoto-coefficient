@@ -1,14 +1,15 @@
-from sector import Sector
-from analysis import Gini, LorenzPlot
-from uuid import uuid
+from .analysis import Gini, LorenzPlot
+import uuid
 
 class Sector(object):
-    def __init__(self):
+    def __init__(self, data, currency, plotly_username, plotly_api_key):
         self.uuid = uuid.uuid4()
-        self.data = None
+        self.data = data
+        self.plotly_username = plotly_username
+        self.plotly_api_key = plotly_api_key
+        self.currency = currency
         self.plot = None
         self.title = None
-        self.currency = None
         self.gini = None
 
     def get_gini_coefficient(self):
@@ -39,4 +40,3 @@ class CustomSector(object):
         lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api, self.contributor_data, file_name)
         plot_url = lorenz_object.plotly_url()
         return plot_url
-

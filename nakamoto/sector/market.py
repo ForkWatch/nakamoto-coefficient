@@ -1,5 +1,5 @@
-from sector import Sector
-from analysis import Gini, LorenzPlot
+from .sector import Sector
+from .analysis import Gini, LorenzPlot
 from requests_html import HTMLSession
 
 class Market(Sector):

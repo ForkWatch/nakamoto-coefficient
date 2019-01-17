@@ -1,12 +1,12 @@
-from sector import Sector
-from analysis import Gini, LorenzPlot
+from .sector import Sector
+from .analysis import Gini, LorenzPlot
 import requests
 import json
 
 class Geography(Sector):
     def __init__(self):
         super(Sector, self).__init__()
-        ether_test = (self.currency == 'ETC') || (self.currency == 'ETH') 
+        ether_test = (self.currency == 'ETC') or (self.currency == 'ETH') 
         if ether_test:
             self.generate_evm_geo_data()
         else:
