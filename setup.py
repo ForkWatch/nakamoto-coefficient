@@ -7,5 +7,8 @@ setup(name='nakamoto',
       email='yaz.khoury@gmail.com',
       license='MIT',
       packages=['nakamoto'],
+      install_requires=[
+          'markdown',
+      ],
       zip_safe=False
 )
