@@ -10,7 +10,4 @@ client_object = Client(random_data,
                        'yazanator90',
                        '0iKTO9Cow8XVEOKklCa3')
 
-client_object.get_gini_coefficient()
-
-
-
+print(client_object.get_nakamoto_coefficient())

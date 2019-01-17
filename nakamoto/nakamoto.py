@@ -1,10 +1,7 @@
 class Nakamoto(object):
-    def __init__(self, sector):
-        self.currency = sector.currency
-        self.gini = sector.gini
-        self.data = sector.data
-        self.id = sector.id
-        self.nakamoto = self.get_nakamoto_coefficient()
+    def __init__(self, data):
+        self.data = data
+        self.nakamoto_coefficient = self.generate_nakamoto_coefficient()
     
     def generate_nakamoto_coefficient(self):
         nakamoto_test = self.data > 0.51
@@ -12,9 +9,8 @@ class Nakamoto(object):
         return nakamoto
 
     def get_nakamoto_coefficient(self):
-        if self.nakamoto:
-            return self.nakamoto
-
+        if self.nakamoto_coefficient:
+            return self.nakamoto_coefficient
 
 class MinimumNakamoto(object):
     def __init__(self, nakamoto_list):

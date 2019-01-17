@@ -1,4 +1,5 @@
 from .analysis import Gini, LorenzPlot
+from nakamoto import Nakamoto
 import uuid
 
 class Sector(object):
@@ -8,6 +9,7 @@ class Sector(object):
         self.plotly_username = plotly_username
         self.plotly_api_key = plotly_api_key
         self.currency = currency
+        self.nakamoto = None
         self.plot = None
         self.title = None
         self.gini = None
@@ -19,6 +21,10 @@ class Sector(object):
     def get_plot_url(self):
         if self.plot:
             return self.plot
+
+    def get_nakamoto_coefficient(self):
+        if self.nakamoto:
+            return self.nakamoto
 
 class CustomSector(object):
     def __init__(self, data, currency, sector_type):
@@ -40,3 +46,7 @@ class CustomSector(object):
         lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api, self.contributor_data, file_name)
         plot_url = lorenz_object.plotly_url()
         return plot_url
+
+    def generate_nakamoto(self):
+        nakamoto_object = Nakamoto(self.data)
+        nakamoto = nakamoto_object.get_nakamoto_coefficient()

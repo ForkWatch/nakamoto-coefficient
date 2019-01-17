@@ -36,6 +36,9 @@ class LorenzPlot(object):
         lorenz = lorenz.astype(float)
         return lorenz
 
+    def get_lorenz_data(self):
+        return self.lorenz_data
+
     def get_plot_url(self):
         plotly.tools.set_credentials_file(username=self.plotly_username, api_key=self.plotly_api_key)
 
@@ -51,5 +54,5 @@ class LorenzPlot(object):
         )
 
         data = [trace, trace2]
-        plot_url = py.plot(data, filename=self.file_name)
+        plot_url = py.plot(data, filename=self.file_name, auto_open=False)
         return plot_url
