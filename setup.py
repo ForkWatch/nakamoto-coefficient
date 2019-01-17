@@ -8,7 +8,12 @@ setup(name='nakamoto',
       license='MIT',
       packages=['nakamoto'],
       install_requires=[
-          'markdown',
+          'numpy',
+          'pandas',
+          'requests',
+          'plotly',
+          'PyGithub',
+          'requests_html'
       ],
       zip_safe=False
 )
