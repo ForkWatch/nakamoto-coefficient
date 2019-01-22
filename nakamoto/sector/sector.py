@@ -27,9 +27,11 @@ class Sector(object):
             return self.nakamoto
 
 class CustomSector(object):
-    def __init__(self, data, currency, sector_type):
+    def __init__(self, data, currency, sector_type, plotly_username, plotly_api_key):
         self.uuid = uuid.uuid4()
         self.data = data
+        self.plotly_username = plotly_username
+        self.plotly_api_key = plotly_api_key
         self.gini = self.generate_gini()
         self.currency = currency
         self.type = sector_type
@@ -43,10 +45,24 @@ class CustomSector(object):
 
     def generate_plot_url(self):
         file_name = f'{self.currency}_{self.type}_gini_{self.uuid}'
-        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api, self.contributor_data, file_name)
-        plot_url = lorenz_object.plotly_url()
+        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api_key, self.data, file_name)
+        plot_url = lorenz_object.get_plot_url()
+        self.lorenz_data = lorenz_object.get_lorenz_data()
         return plot_url
 
     def generate_nakamoto(self):
-        nakamoto_object = SectorNakamoto(self.data)
+        nakamoto_object = SectorNakamoto(self.lorenz_data)
         nakamoto = nakamoto_object.get_nakamoto_coefficient()
+        return nakamoto
+
+    def get_gini_coefficient(self):
+        if self.gini:
+            return self.gini
+
+    def get_plot_url(self):
+        if self.plot:
+            return self.plot
+
+    def get_nakamoto_coefficient(self):
+        if self.nakamoto:
+            return self.nakamoto

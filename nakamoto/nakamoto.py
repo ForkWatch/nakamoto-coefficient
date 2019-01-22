@@ -1,10 +1,13 @@
+import numpy as np
+
 class SectorNakamoto(object):
     def __init__(self, data):
         self.data = data
         self.nakamoto_coefficient = self.generate_nakamoto_coefficient()
     
     def generate_nakamoto_coefficient(self):
-        nakamoto_test = self.data > 0.51
+        cutoff = 0.51
+        nakamoto_test = self.data > cutoff 
         nakamoto = sum(nakamoto_test)
         return nakamoto
 
