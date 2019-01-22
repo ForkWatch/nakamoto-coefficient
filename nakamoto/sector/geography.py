@@ -1,11 +1,14 @@
 from .sector import Sector
+from nakamoto import SectorNakamoto
 from .analysis import Gini, LorenzPlot
 import requests
 import json
+import pandas as pd
+import numpy as np
 
 class Geography(Sector):
-    def __init__(self):
-        super(Sector, self).__init__()
+    def __init__(self, data, currency, plotly_username, plotly_api_key):
+        super(Geography, self).__init__(data, currency, plotly_username, plotly_api_key)
         ether_test = (self.currency == 'ETC') or (self.currency == 'ETH') 
         if ether_test:
             self.generate_evm_geo_data()
@@ -29,13 +32,20 @@ class Geography(Sector):
         country_raw = df.groupby('country').nunique()
         country = country_raw['id']
         country = country.sort_values()
-        country_data = np.array(country)
-        gini_object = Gini(country_data)
+        self.data = np.array(country)
+        gini_object = Gini(self.data)
         self.gini = gini_object.get_gini()
         self.plot = self.generate_lorenz_curve()
+        self.nakamoto = self.generate_nakamoto_coefficient()
+
+    def generate_nakamoto_coefficient(self):
+        nakamoto_object = SectorNakamoto(self.lorenz_data)
+        nakamoto = nakamoto_object.get_nakamoto_coefficient()
+        return nakamoto
 
     def generate_lorenz_curve(self):
         file_name = f'{self.currency}_country_gini_{self.uuid}'
-        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api, self.contributor_data, file_name)
-        plot_url = lorenz_object.plotly_url()
+        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api_key, self.data, file_name)
+        plot_url = lorenz_object.get_plot_url()
+        self.lorenz_data = lorenz_object.get_lorenz_data()
         return plot_url

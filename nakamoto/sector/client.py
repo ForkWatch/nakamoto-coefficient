@@ -13,7 +13,7 @@ class Client(Sector):
         if ether_test:
             self.generate_evm_client_data()
         else:
-            raise "Node Geography only implemented for EVM-based Nodes"
+            raise "Node Client only implemented for EVM-based Nodes"
 
     def generate_evm_client_data(self):
         """
