@@ -1,4 +1,4 @@
-class Nakamoto(object):
+class SectorNakamoto(object):
     def __init__(self, data):
         self.data = data
         self.nakamoto_coefficient = self.generate_nakamoto_coefficient()

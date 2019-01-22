@@ -1,5 +1,5 @@
 from .analysis import Gini, LorenzPlot
-from nakamoto import Nakamoto
+from nakamoto import SectorNakamoto
 import uuid
 
 class Sector(object):
@@ -48,5 +48,5 @@ class CustomSector(object):
         return plot_url
 
     def generate_nakamoto(self):
-        nakamoto_object = Nakamoto(self.data)
+        nakamoto_object = SectorNakamoto(self.data)
         nakamoto = nakamoto_object.get_nakamoto_coefficient()

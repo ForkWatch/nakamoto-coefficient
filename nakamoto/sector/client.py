@@ -1,6 +1,6 @@
 from .sector import Sector
 from .analysis import Gini, LorenzPlot
-from nakamoto import Nakamoto
+from nakamoto import SectorNakamoto
 import requests
 import json
 import pandas as pd
@@ -34,14 +34,14 @@ class Client(Sector):
         client_raw = df.groupby('client').nunique()
         client = client_raw['id']
         client = client.sort_values()
-        client_data = np.array(client)
-        gini_object = Gini(client_data)
+        self.data = np.array(client)
+        gini_object = Gini(self.data)
         self.gini = gini_object.get_gini()
         self.plot = self.generate_lorenz_curve()
         self.nakamoto = self.generate_nakamoto_coefficient()
         
     def generate_nakamoto_coefficient(self):
-        nakamoto_object = Nakamoto(self.lorenz_data)
+        nakamoto_object = SectorNakamoto(self.lorenz_data)
         nakamoto = nakamoto_object.get_nakamoto_coefficient() 
         return nakamoto
 

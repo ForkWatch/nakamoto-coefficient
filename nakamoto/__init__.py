@@ -1,1 +1,1 @@
-from .nakamoto import Nakamoto, MinimumNakamoto
+from .nakamoto import SectorNakamoto, MinimumNakamoto
