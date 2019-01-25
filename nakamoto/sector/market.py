@@ -9,6 +9,7 @@ import numpy as np
 class Market(Sector):
     def __init__(self, currency, market_url, **kwargs):
         super(Market, self).__init__(currency, **kwargs)
+        self.type = 'market'
         self.market_url = market_url
         self.generate_market_data()
         

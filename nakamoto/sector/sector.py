@@ -7,6 +7,7 @@ class Sector(object):
     def __init__(self, currency, **kwargs):
         self.uuid = uuid.uuid4()
         self.data = None 
+        self.type = None
         self.plotly_username = kwargs.get('plotly_username')
         self.plotly_api_key = kwargs.get('plotly_api_key')
         self.currency = currency
@@ -28,11 +29,11 @@ class Sector(object):
             return self.nakamoto
 
 class CustomSector(object):
-    def __init__(self, data, currency, sector_type, plotly_username, plotly_api_key):
+    def __init__(self, data, currency, sector_type, **kwargs):
         self.uuid = uuid.uuid4()
         self.data = data
-        self.plotly_username = plotly_username
-        self.plotly_api_key = plotly_api_key
+        self.plotly_username = kwargs.get('plotly_username')
+        self.plotly_api_key = kwargs.get('plotly_api_key')
         self.gini = self.generate_gini()
         self.currency = currency
         self.type = sector_type

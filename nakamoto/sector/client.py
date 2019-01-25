@@ -9,6 +9,7 @@ import numpy as np
 class Client(Sector):
     def __init__(self, currency, **kwargs):
         super(Client, self).__init__(currency, **kwargs)
+        self.type = 'client'
         ether_test = (self.currency == 'ETC') or (self.currency == 'ETH')
         if ether_test:
             self.generate_evm_client_data()

@@ -8,6 +8,7 @@ import numpy as np
 class Repository(Sector):
     def __init__(self, currency, github_api, github_url, **kwargs):
         super(Repository, self).__init__(currency, **kwargs)
+        self.type = 'repository'
         self.github_url = self.sanitize_url(github_url)
         self.github_api = github_api
         self.generate_repository_data()
