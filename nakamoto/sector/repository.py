@@ -6,8 +6,8 @@ import re
 import numpy as np
 
 class Repository(Sector):
-    def __init__(self, data, currency, plotly_username, plotly_api_key, github_api, github_url):
-        super(Repository, self).__init__(data, currency, plotly_username, plotly_api_key)
+    def __init__(self, currency, plotly_username, plotly_api_key, github_api, github_url):
+        super(Repository, self).__init__(currency, plotly_username, plotly_api_key)
         self.github_url = self.sanitize_url(github_url)
         self.github_api = github_api
         self.generate_repository_data()

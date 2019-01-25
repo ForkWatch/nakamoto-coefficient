@@ -7,8 +7,8 @@ import numpy as np
 
 
 class Market(Sector):
-    def __init__(self, data, currency, plotly_username, plotly_api_key, market_url):
-        super(Market, self).__init__(data, currency, plotly_username, plotly_api_key)
+    def __init__(self, currency, plotly_username, plotly_api_key, market_url):
+        super(Market, self).__init__(currency, plotly_username, plotly_api_key)
         self.market_url = market_url
         self.generate_market_data()
         

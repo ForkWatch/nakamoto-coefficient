@@ -3,9 +3,9 @@ from nakamoto import SectorNakamoto
 import uuid
 
 class Sector(object):
-    def __init__(self, data, currency, plotly_username, plotly_api_key):
+    def __init__(self, currency, plotly_username, plotly_api_key):
         self.uuid = uuid.uuid4()
-        self.data = data
+        self.data = None 
         self.plotly_username = plotly_username
         self.plotly_api_key = plotly_api_key
         self.currency = currency

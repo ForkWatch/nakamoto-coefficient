@@ -7,8 +7,8 @@ import pandas as pd
 import numpy as np
 
 class Client(Sector):
-    def __init__(self, data, currency, plotly_username, plotly_api_key):
-        super(Client, self).__init__(data, currency, plotly_username, plotly_api_key)
+    def __init__(self, currency, plotly_username, plotly_api_key):
+        super(Client, self).__init__(currency, plotly_username, plotly_api_key)
         ether_test = (self.currency == 'ETC') or (self.currency == 'ETH')
         if ether_test:
             self.generate_evm_client_data()
