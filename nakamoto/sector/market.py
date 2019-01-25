@@ -7,8 +7,8 @@ import numpy as np
 
 
 class Market(Sector):
-    def __init__(self, currency, plotly_username, plotly_api_key, market_url):
-        super(Market, self).__init__(currency, plotly_username, plotly_api_key)
+    def __init__(self, currency, market_url, **kwargs):
+        super(Market, self).__init__(currency, **kwargs)
         self.market_url = market_url
         self.generate_market_data()
         
@@ -26,7 +26,6 @@ class Market(Sector):
         volume_data = pd.to_numeric(volume_data)
         volume_data = volume_data.sort_values()
         self.data = np.array(volume_data)
-        print(self.data)
         gini_object = Gini(self.data)
         self.gini = gini_object.get_gini()
         self.plot = self.generate_lorenz_curve()

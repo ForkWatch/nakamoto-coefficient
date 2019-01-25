@@ -7,8 +7,8 @@ import pandas as pd
 import numpy as np
 
 class Geography(Sector):
-    def __init__(self, currency, plotly_username, plotly_api_key):
-        super(Geography, self).__init__(currency, plotly_username, plotly_api_key)
+    def __init__(self, currency, **kwargs):
+        super(Geography, self).__init__(currency, **kwargs)
         ether_test = (self.currency == 'ETC') or (self.currency == 'ETH') 
         if ether_test:
             self.generate_evm_geo_data()

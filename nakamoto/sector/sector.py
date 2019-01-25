@@ -2,12 +2,13 @@ from .analysis import Gini, LorenzPlot
 from nakamoto import SectorNakamoto
 import uuid
 
+
 class Sector(object):
-    def __init__(self, currency, plotly_username, plotly_api_key):
+    def __init__(self, currency, **kwargs):
         self.uuid = uuid.uuid4()
         self.data = None 
-        self.plotly_username = plotly_username
-        self.plotly_api_key = plotly_api_key
+        self.plotly_username = kwargs.get('plotly_username')
+        self.plotly_api_key = kwargs.get('plotly_api_key')
         self.currency = currency
         self.nakamoto = None
         self.plot = None
