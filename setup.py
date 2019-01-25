@@ -1,19 +1,25 @@
 from setuptools import setup
 
-setup(name='nakamoto',
-      version='0.1',
-      description='generate nakamoto coefficient of cryptocurrency',
-      author='Yaz Khoury',
-      email='yaz.khoury@gmail.com',
-      license='MIT',
-      packages=['nakamoto'],
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setup(name="nakamoto",
+      version="0.1",
+      author="Yaz Khoury",
+      author_email="yaz.khoury@gmail.com",
+      description="Python Library to Generate Nakamoto Coefficient",
+      long_description=long_description,
+      long_description_content_type="text/markdown",
+      url="https://github.com/YazzyYaz/nakamoto-coefficient",
+      license="MIT",
+      packages=["nakamoto"],
       install_requires=[
-          'numpy',
-          'pandas',
-          'requests',
-          'plotly',
-          'PyGithub',
-          'requests_html'
+          "numpy",
+          "pandas",
+          "requests",
+          "plotly",
+          "PyGithub",
+          "requests_html"
       ],
       zip_safe=False
 )
