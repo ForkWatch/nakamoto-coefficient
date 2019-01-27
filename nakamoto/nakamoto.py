@@ -1,4 +1,6 @@
 import numpy as np
+import pandas as pd
+
 
 class SectorNakamoto(object):
     def __init__(self, data):
@@ -15,13 +17,14 @@ class SectorNakamoto(object):
         if self.nakamoto_coefficient:
             return self.nakamoto_coefficient
 
-class MinimumNakamoto(object):
+
+class Nakamoto(object):
     def __init__(self, nakamoto_list):
         self.nakamoto_dict = {}
         self.nakamoto_list = nakamoto_list
         self.minimum_coefficient_sector_id = None
         for nakamoto_obj in self.nakamoto_list:
-            self.nakamoto_dict[nakamoto_obj.id] = nakamoto_obj.get_nakamoto_coefficient()
+            self.nakamoto_dict[nakamoto_obj.type] = nakamoto_obj.get_nakamoto_coefficient()
         self.minimum_coefficient = self.generate_minimum_nakamoto()
 
     def generate_minimum_nakamoto(self):
@@ -36,3 +39,18 @@ class MinimumNakamoto(object):
     def get_mininum_nakamoto_id(self):
         if self.minimum_coefficient_sector_id:
             return self.minimum_coefficient_sector_id
+    
+    def get_sector_series(self, sector):
+        data_labels = ['Gini Coefficient', 'Nakamoto Coefficient']
+        data = [round(sector.get_gini_coefficient(), 3), 
+                sector.get_nakamoto_coefficient()]
+        series = pd.Series(data, index=data_labels, name=sector.type)
+        return series
+
+    def get_summary(self):
+        sector_series = []
+        for sector in self.nakamoto_list:
+            series = self.get_sector_series(sector)
+            sector_series.append(series)
+        nakamoto_dataframe = pd.concat(sector_series, axis=1)
+        return nakamoto_dataframe
