@@ -1,4 +1,4 @@
-# Nakamoto Coefficient
+# ![nakamoto logo](https://www.dropbox.com/s/wp84e8snyhi9u8e/kisspng-anonymity-computer-icons-anonymous-mask-5ad26e042e19f4.0637242715237401641888.png ) Nakamoto Coefficient
 
 A Python library for measuring the Nakamoto Coefficient of a Sector.
 Based on the post ["Quantifying Dectralization"](https://news.earn.com/quantifying-decentralization-e39db233c28e?gi=26ec1a01794a)
