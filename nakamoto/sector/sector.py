@@ -36,7 +36,8 @@ class Sector(object):
 
     def generate_lorenz_object(self):
         file_name = f'{self.currency}_{self.type}_gini_{self.uuid}'
-        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api_key, self.data, file_name)
+        title_name = f'{self.currency} {self.type.capitalize()} Lorenz Curve'
+        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api_key, self.data, file_name, title_name)
         return lorenz_object
 
     def generate_lorenz_data(self):
@@ -107,7 +108,8 @@ class CustomSector(object):
 
     def generate_lorenz_object(self):
         file_name = f'{self.currency}_{self.type}_gini_{self.uuid}'
-        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api_key, self.data, file_name)
+        title_name = f'{self.currency} {self.type.capitalize()} Lorenz Curve'
+        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api_key, self.data, file_name, title_name)
         return lorenz_object
 
     def generate_lorenz_data(self):

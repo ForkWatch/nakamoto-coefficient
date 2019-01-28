@@ -12,13 +12,13 @@ random_data = np.append(np.random.poisson(lam=10, size=40),
                  np.random.poisson(lam=100, size=10))
 
 currency = 'ETC'
-market_url = os.environ['MARKET_URL'] or 'https://coinmarketcap.com/currencies/ethereum-classic/#markets'
+market_url = 'https://coinmarketcap.com/currencies/ethereum-classic/#markets'
 
 nakamoto_config = {
     'plotly_username': os.environ['PLOTLY_USERNAME'],
     'plotly_api_key': os.environ['PLOTLY_API_KEY']
 }
-github_url = os.environ['GITHUB_URL'] or 'https://github.com/input-output-hk/mantis'
+github_url = 'https://github.com/input-output-hk/mantis'
 github_api = os.environ['GITHUB_API']
 
 

@@ -3,6 +3,8 @@
 A Python library for measuring the Nakamoto Coefficient of a Sector.
 Based on the post ["Quantifying Dectralization"](https://news.earn.com/quantifying-decentralization-e39db233c28e?gi=26ec1a01794a)
 
+![nakamoto plot](assets/plot.png)
+
 Features:
 - Nakamoto Coefficient Measurement
 - [Gini](https://www.investopedia.com/terms/g/gini-index.asp) Coefficient Measurement
