@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(name="nakamoto",
-      version="0.1.2.1",
+      version="0.1.2.2",
       author="Yaz Khoury",
       author_email="yaz.khoury@gmail.com",
       description="Python Library to Generate Nakamoto Coefficient",
