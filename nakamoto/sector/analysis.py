@@ -27,7 +27,7 @@ class LorenzPlot(object):
         self.data_array = data_array
         self.file_name = file_name
         self.lorenz_data = self.generate_lorenz_curve()
-        self.plotly_url = self.get_plot_url()
+        self.plotly_url = None 
 
     def generate_lorenz_curve(self):
         data_copy = self.data_array.copy()
@@ -39,7 +39,7 @@ class LorenzPlot(object):
     def get_lorenz_data(self):
         return self.lorenz_data
 
-    def get_plot_url(self):
+    def generate_plot_url(self):
         plotly.tools.set_credentials_file(username=self.plotly_username, api_key=self.plotly_api_key)
 
         trace = go.Scattergl(
@@ -56,3 +56,8 @@ class LorenzPlot(object):
         data = [trace, trace2]
         plot_url = py.plot(data, filename=self.file_name, auto_open=False)
         return plot_url
+
+    def get_plot_url(self):
+        if not self.plotly_url:
+            self.plotly_url = self.generate_plot_url()
+        return self.plotly_url

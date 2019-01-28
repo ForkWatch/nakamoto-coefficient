@@ -36,19 +36,3 @@ class Client(Sector):
         client = client_raw['id']
         client = client.sort_values()
         self.data = np.array(client)
-        gini_object = Gini(self.data)
-        self.gini = gini_object.get_gini()
-        self.plot = self.generate_lorenz_curve()
-        self.nakamoto = self.generate_nakamoto_coefficient()
-        
-    def generate_nakamoto_coefficient(self):
-        nakamoto_object = SectorNakamoto(self.lorenz_data)
-        nakamoto = nakamoto_object.get_nakamoto_coefficient() 
-        return nakamoto
-
-    def generate_lorenz_curve(self):
-        file_name = f'{self.currency}_client_gini_{self.uuid}'
-        lorenz_object = LorenzPlot(self.plotly_username, self.plotly_api_key, self.data, file_name)
-        plot_url = lorenz_object.get_plot_url()
-        self.lorenz_data = lorenz_object.get_lorenz_data()
-        return plot_url
