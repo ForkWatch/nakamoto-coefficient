@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import numpy as np
 
+
 class Client(Sector):
     def __init__(self, currency, **kwargs):
         super(Client, self).__init__(currency, **kwargs)

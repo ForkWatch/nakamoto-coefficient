@@ -4,6 +4,7 @@ import json
 import pandas as pd
 import numpy as np
 
+
 class Geography(Sector):
     def __init__(self, currency, **kwargs):
         super(Geography, self).__init__(currency, **kwargs)

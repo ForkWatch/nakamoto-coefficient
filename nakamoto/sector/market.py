@@ -1,6 +1,4 @@
 from .sector import Sector
-from .analysis import Gini, LorenzPlot
-from nakamoto import SectorNakamoto
 from requests_html import HTMLSession
 import pandas as pd
 import numpy as np
