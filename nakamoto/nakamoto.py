@@ -25,7 +25,7 @@ class Nakamoto(object):
         self.minimum_coefficient_sector_id = None
         for nakamoto_obj in self.nakamoto_list:
             self.nakamoto_dict[nakamoto_obj.type] = nakamoto_obj.get_nakamoto_coefficient()
-        self.minimum_coefficient = self.generate_minimum_nakamoto()
+        self.minimum_coefficient = None 
 
     def generate_minimum_nakamoto(self):
         self.minimum_coefficient_sector_id = min(self.nakamoto_dict, key=self.nakamoto_dict.get)
@@ -33,12 +33,14 @@ class Nakamoto(object):
         return minimum_coefficient_nakamoto_value
 
     def get_minimum_nakamoto(self):
-        if self.minimum_coefficient:
-            return self.minimum_coefficient
+        if not self.minimum_coefficient:
+            self.minimum_coefficient = self.generate_minimum_nakamoto()
+        return self.minimum_coefficient
 
-    def get_mininum_nakamoto_id(self):
-        if self.minimum_coefficient_sector_id:
-            return self.minimum_coefficient_sector_id
+    def get_minimum_nakamoto_id(self):
+        if not self.minimum_coefficient_sector_id:
+            _ = self.generate_minimum_nakamoto()
+        return self.minimum_coefficient_sector_id
     
     def get_sector_series(self, sector):
         data_labels = ['Gini Coefficient', 'Nakamoto Coefficient']
