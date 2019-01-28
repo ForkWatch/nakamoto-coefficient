@@ -1,4 +1,4 @@
-# ![nakamoto logo](assets/logo.png ) Nakamoto
+# ![nakamoto logo](assets/logo.png ) Nakamoto Coefficient
 
 A Python library for measuring the Nakamoto Coefficient of a Sector.
 Based on the post ["Quantifying Dectralization"](https://news.earn.com/quantifying-decentralization-e39db233c28e?gi=26ec1a01794a)
@@ -14,6 +14,15 @@ Features:
 
 ```
 $ pip install nakamoto
+```
+
+## Running Tests
+
+Make sure to sign up for Plotly to get an API Key, as well as get a Github API Key.
+Github and Market URL Environment Variables aren't required to run full test script below.
+
+```
+PLOTLY_USERNAME=X PLOTLY_API_KEY=Y GITHUB_URL=Z GITHUB_API=A MARKET_URL=B python3 test.py
 ```
 
 ## Sectors
