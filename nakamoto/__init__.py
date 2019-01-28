@@ -1,1 +1,1 @@
-from .nakamoto import SectorNakamoto, Nakamoto
+from .coefficient import SectorNakamoto, Nakamoto

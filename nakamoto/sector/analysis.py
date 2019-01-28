@@ -16,7 +16,7 @@ class Gini(object):
         constant = Decimal((n + 1.) / n)
         weighted_sum = sum([(index + 1) * item for index, item in enumerate(self.data_array)])
         gini = coefficient * weighted_sum / (self.data_array.sum()) - constant
-        return gini
+        return float(gini)
 
     def get_gini(self):
         return self.gini_coefficient

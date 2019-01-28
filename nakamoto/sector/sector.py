@@ -1,5 +1,5 @@
 from .analysis import Gini, LorenzPlot
-from nakamoto import SectorNakamoto
+from nakamoto.coefficient import SectorNakamoto
 import uuid
 import numpy as np
 
