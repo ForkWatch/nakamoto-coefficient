@@ -35,7 +35,7 @@ We can save the config in a dictionary like this:
 ```
 nakamoto_config = {
     'plotly_username': PLOTLY_USERNAME,
-    'plotly_api_key': PLOTLY_API_KEY]
+    'plotly_api_key': PLOTLY_API_KEY
 }
 ```
 where `PLOTLY_USERNAME` and `PLOTLY_API_KEY` are the values you get from Plotly.
@@ -69,6 +69,9 @@ To first get the Gini coefficient, we run the following command:
 ```python
 gini = custom_sector.get_gini_coefficient()
 print(gini)
+```
+
+```shell
 $ 0.5093952180028129535951653520 
 ```
 
@@ -77,6 +80,8 @@ To get the Nakamoto coefficient, we run the following command:
 ```python
 nakamoto = custom_sector.get_nakamoto_coefficient()
 print(nakamoto)
+```
+```shell
 $ 7
 ```
 
