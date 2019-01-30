@@ -11,6 +11,9 @@ import logging
 random_data = np.append(np.random.poisson(lam=10, size=40), 
                  np.random.poisson(lam=100, size=10))
 
+random_data_2 = np.append(np.random.poisson(lam=10, size=40), 
+                 np.random.poisson(lam=100, size=10))
+
 currency = 'ETC'
 market_url = 'https://coinmarketcap.com/currencies/ethereum-classic/#markets'
 
@@ -18,6 +21,7 @@ nakamoto_config = {
     'plotly_username': os.environ['PLOTLY_USERNAME'],
     'plotly_api_key': os.environ['PLOTLY_API_KEY']
 }
+
 github_url = 'https://github.com/input-output-hk/mantis'
 github_api = os.environ['GITHUB_API']
 
@@ -131,16 +135,22 @@ class TestNakamoto(unittest.TestCase):
                                           currency, 
                                           'custom_sector_type',
                                           **nakamoto_config)
+        self.custom_sector_2 = CustomSector(random_data_2, 
+                                          currency, 
+                                          'custom_sector_type',
+                                          **nakamoto_config)
+
         self.geography = Geography(currency, **nakamoto_config)
         self.repository = Repository(currency, github_api, github_url, **nakamoto_config)
         self.market = Market(currency, market_url, **nakamoto_config)
         self.client = Client(currency, **nakamoto_config)
-
         self.sector_list = [self.geography, 
                             self.market, 
                             self.client, 
                             self.repository, 
-                            self.custom_sector]
+                            self.custom_sector,
+                            self.custom_sector_2]
+        #self.sector_list = [self.custom_sector, self.custom_sector_2]
         self.nakamoto = Nakamoto(self.sector_list)
 
     def test_nakamoto_summary(self):
@@ -157,6 +167,16 @@ class TestNakamoto(unittest.TestCase):
         nakamoto_id = self.nakamoto.get_minimum_nakamoto_id()
         nakamoto_id_string = len(nakamoto_id) > 0
         self.assertTrue(nakamoto_id_string, 'No Minimum Nakamoto ID Returned')
+
+    def test_gini_maximum(self):
+        gini = self.nakamoto.get_maximum_gini()
+        gini_range = (gini > 0) and (gini < 1)
+        self.assertTrue(gini_range, 'Gini Range Out of Bounds')
+
+    def test_gini_maximum_id(self):
+        gini_id = self.nakamoto.get_maximum_gini_id()
+        gini_id_string = len(gini_id) > 0
+        self.assertTrue(gini_id_string, 'No Gini ID Returned')
         
 
 if __name__ == '__main__':
