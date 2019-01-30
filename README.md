@@ -90,7 +90,9 @@ To generate the Plotly graph and get the URL for the graph, we run this command:
 plot_url = custom_sector.get_plot_url()
 ```
 
-An example plot is found ["here"](https://plot.ly/~yazanator90/352).
+![nakamoto plot 2](assets/plot2.png)
+
+An example plot is found ["here"](https://plot.ly/~yazanator90/372).
 
 
 ### Repository
