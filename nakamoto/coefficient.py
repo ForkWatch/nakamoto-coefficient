@@ -21,26 +21,45 @@ class SectorNakamoto(object):
 class Nakamoto(object):
     def __init__(self, nakamoto_list):
         self.nakamoto_dict = {}
+        self.gini_dict = {}
         self.nakamoto_list = nakamoto_list
-        self.minimum_coefficient_sector_id = None
+        self.minimum_nakamoto_id = None
+        self.maximum_gini_id = None
         for nakamoto_obj in self.nakamoto_list:
             self.nakamoto_dict[nakamoto_obj.type] = nakamoto_obj.get_nakamoto_coefficient()
-        self.minimum_coefficient = None 
+            self.gini_dict[nakamoto_obj.type] = nakamoto_obj.get_gini_coefficient()
+        self.minimum_nakamoto = None 
+        self.maximum_gini = None
 
     def generate_minimum_nakamoto(self):
-        self.minimum_coefficient_sector_id = min(self.nakamoto_dict, key=self.nakamoto_dict.get)
-        minimum_coefficient_nakamoto_value = self.nakamoto_dict[self.minimum_coefficient_sector_id]
-        return minimum_coefficient_nakamoto_value
+        self.minimum_nakamoto_id = min(self.nakamoto_dict, key=self.nakamoto_dict.get)
+        minimum_nakamoto_value = self.nakamoto_dict[self.minimum_nakamoto_id]
+        return minimum_nakamoto_value
+
+    def generate_maximum_gini(self):
+        self.maximum_gini_id = max(self.gini_dict, key=self.gini_dict.get)
+        maximum_gini_value = self.gini_dict[self.maximum_gini_id]
+        return maximum_gini_value
 
     def get_minimum_nakamoto(self):
-        if not self.minimum_coefficient:
-            self.minimum_coefficient = self.generate_minimum_nakamoto()
-        return self.minimum_coefficient
+        if not self.minimum_nakamoto:
+            self.minimum_nakamoto = self.generate_minimum_nakamoto()
+        return self.minimum_nakamoto
+
+    def get_maximum_gini(self):
+        if not self.maximum_gini:
+            self.maximum_gini = self.generate_maximum_gini()
+        return self.maximum_gini
 
     def get_minimum_nakamoto_id(self):
-        if not self.minimum_coefficient_sector_id:
+        if not self.minimum_nakamoto_id:
             _ = self.generate_minimum_nakamoto()
-        return self.minimum_coefficient_sector_id
+        return self.minimum_nakamoto_id
+
+    def get_maximum_gini_id(self):
+        if not self.maximum_gini_id:
+            _ = self.generate_maximum_gini()
+        return self.maximum_gini_id
     
     def get_sector_series(self, sector):
         data_labels = ['Gini Coefficient', 'Nakamoto Coefficient']
@@ -55,4 +74,4 @@ class Nakamoto(object):
             series = self.get_sector_series(sector)
             sector_series.append(series)
         nakamoto_dataframe = pd.concat(sector_series, axis=1)
-        return nakamoto_dataframe
+        return nakamoto_dataframe.transpose()
