@@ -152,3 +152,45 @@ geography = Geography(currency, **nakamoto_config)
 ```
 
 Same methods to generate Gini, Nakamoto, and Lorenz Curve like `CustomSector`.
+
+
+## Nakamoto Coefficient Class
+
+The `Nakamoto` class can take in a list of sectors that you created above and can generate an analysis
+over the entire ecosystem. 
+
+It returns back 2 things:
+1. Minimum Nakamoto: This is the minimum nakamoto of each sector's nakamoto, highlighting the most vulnerable sector as measured by
+the number of entities needed to compromise it.
+2. Maximum Gini: This shows the highest gini coefficient, indicating the sector with the highest distribution of inequality, indicating a centralization point.
+
+You can also generate a nice dataframe summary of all the sectors.
+
+```python
+from nakamoto.coefficient import Nakamoto
+
+
+sector_list = [geography, 
+               market, 
+               client, 
+               repository, 
+               custom_sector]
+nakamoto = Nakamoto(sector_list)
+```
+
+Now, let's get the maximum gini and accompanying sector id
+```python
+nakamoto.get_maximum_gini()
+```
+
+To get the minimum nakamoto coefficient, we execute the `.get_minimum_nakamoto()` method.
+```python
+nakamoto.get_minimum_nakamoto()
+```
+
+In order to get a Pandas dataframe summary, use the `.summary()` method.
+```python
+nakamoto.get_summary()
+```
+
+![nakamoto summary](assets/summary.png)
