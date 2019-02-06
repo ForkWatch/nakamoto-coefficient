@@ -1,4 +1,4 @@
-# ![nakamoto logo](assets/logo.png ) Nakamoto Coefficient
+# ![nakamoto logo](assets/logo.png ) Nakamoto: A Python Library for Quantifying Decentralization
 
 A Python library for measuring the Nakamoto Coefficient of a Sector.
 Based on the post ["Quantifying Dectralization"](https://news.earn.com/quantifying-decentralization-e39db233c28e?gi=26ec1a01794a)
