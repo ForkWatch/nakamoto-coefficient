@@ -29,16 +29,15 @@ PLOTLY_USERNAME=X PLOTLY_API_KEY=Y GITHUB_URL=Z python3 test.py
 
 ## Sectors
 
-Before we generate sector data, we will need to sign up for [Plotly](https://plot.ly/).
-You'll need the username and api key from Plotly to generate the plots.
+We need to specify if we want to run this in a Jupyter Notebook or save the plot images.
 We can save the config in a dictionary like this:
 ```
 nakamoto_config = {
-    'plotly_username': PLOTLY_USERNAME,
-    'plotly_api_key': PLOTLY_API_KEY
+    'plot_notebook': TRUE,
+    'plot_image_path': "image.png"
 }
 ```
-where `PLOTLY_USERNAME` and `PLOTLY_API_KEY` are the values you get from Plotly.
+where `PLOT_NOTEBOOK` and `PLOT_IMAGE_PATH` are the values you ge.
 
 ### Custom Sectors
 This module allows passing a numpy array of data to be processed in order to measure inequality distribution (gini) and decentralization
@@ -56,6 +55,8 @@ currency = 'ETC'
 Now, we will generate the `CustomSector` object using those variables:
 
 ```python
+from nakamoto.sector import CustomSector
+
 custom_sector = CustomSector(random_data, 
                  currency, 
                  'custom_sector_type',
@@ -87,13 +88,9 @@ $ 7
 
 To generate the Plotly graph and get the URL for the graph, we run this command:
 ```python
-plot_url = custom_sector.get_plot_url()
+plot = custom_sector.get_plot()
 ```
-
 ![nakamoto plot 2](assets/plot2.png)
-
-An example plot is found ["here"](https://plot.ly/~yazanator90/372).
-
 
 ### Repository
 Measures Github contributions of all who contribute to a specific repository and determines
@@ -106,6 +103,8 @@ You also need to find a github repository url that you want to analyze for decen
 In this example, I'll be using IOHK's ["Mantis Client"](https://github.com/input-output-hk/mantis) for Ethereum Classic.
 
 ```python
+from nakamoto.sector import Repository
+
 github_url = "https://github.com/input-output-hk/mantis"
 github_api = YOUR_GITHUB_API
 repository = Repository(currency, github_api, github_url, **nakamoto_config)
@@ -123,6 +122,8 @@ minimum exchanges needed to centralize volume.
 Note: You need the #market link for your currency for CoinMarketCap. In this example, I use the Ethereum Classic Market URL:
 
 ```python
+from nakamoto.sector import Market
+
 market_url = 'https://coinmarketcap.com/currencies/ethereum-classic/#markets'
 market = Market(currency, market_url, **nakamoto_config)
 ```
@@ -136,6 +137,8 @@ and have more coins. For now, only 2 currencies you can pass it are `ETC` and `E
 Future versions will have a separation between EVM chains and will include BTC. Pull Requests welcome!
 
 ```python
+from nakamoto.sector import Client
+
 client = Client(currency, **nakamoto_config)
 ```
 
@@ -148,6 +151,8 @@ the data and have more coins. For now, only 2 currencies you can pass it are `ET
 Future versions will have a separation between EVM chains and will include BTC. Pull Requests welcome!
 
 ```python
+from nakamoto.sector import Geography
+
 geography = Geography(currency, **nakamoto_config)
 ```
 
