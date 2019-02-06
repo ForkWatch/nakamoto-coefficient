@@ -3,6 +3,9 @@
 A Python library for measuring the Nakamoto Coefficient of a Sector.
 Based on the post ["Quantifying Dectralization"](https://news.earn.com/quantifying-decentralization-e39db233c28e?gi=26ec1a01794a)
 
+There is a [Medium post](https://medium.com/ethereum-classic/analyzing-ethereum-classic-with-google-bigquery-df55822ec6a6) going over BigQuery SQL and Nakamoto Coefficient for this module.
+There is a [Kaggle Notebook](https://www.kaggle.com/yazanator/nakamoto-coefficient-of-etc-with-google-bigquery) for Nakamoto Coefficient with code examples.
+
 ![nakamoto plot](https://s3.amazonaws.com/occupied-mars/crypto/plot.png)
 
 Features:
