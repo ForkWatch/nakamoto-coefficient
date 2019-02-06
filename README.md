@@ -1,9 +1,9 @@
-# ![nakamoto logo](assets/logo.png ) Nakamoto: A Python Library for Quantifying Decentralization
+# ![nakamoto logo](https://s3.amazonaws.com/occupied-mars/crypto/logo.png) Nakamoto: A Python Library for Quantifying Decentralization
 
 A Python library for measuring the Nakamoto Coefficient of a Sector.
 Based on the post ["Quantifying Dectralization"](https://news.earn.com/quantifying-decentralization-e39db233c28e?gi=26ec1a01794a)
 
-![nakamoto plot](assets/plot.png)
+![nakamoto plot](https://s3.amazonaws.com/occupied-mars/crypto/plot.png)
 
 Features:
 - Nakamoto Coefficient Measurement
@@ -24,7 +24,7 @@ Make sure to sign up for Plotly to get an API Key, as well as get a Github API K
 Github and Market URL Environment Variables aren't required to run full test script below.
 
 ```
-PLOTLY_USERNAME=X PLOTLY_API_KEY=Y GITHUB_URL=Z python3 test.py
+PLOT_NOTEBOOK=1 PLOT_IMAGE_PATH=image.png GITHUB_URL=Z python3 test.py
 ```
 
 ## Sectors
@@ -90,7 +90,7 @@ To generate the Plotly graph and get the URL for the graph, we run this command:
 ```python
 plot = custom_sector.get_plot()
 ```
-![nakamoto plot 2](assets/plot2.png)
+![nakamoto plot 2](https://s3.amazonaws.com/occupied-mars/crypto/plot2.png)
 
 ### Repository
 Measures Github contributions of all who contribute to a specific repository and determines
@@ -198,4 +198,4 @@ In order to get a Pandas dataframe summary, use the `.summary()` method.
 nakamoto.get_summary()
 ```
 
-![nakamoto summary](assets/summary.png)
+![nakamoto summary](https://s3.amazonaws.com/occupied-mars/crypto/summary.png)
