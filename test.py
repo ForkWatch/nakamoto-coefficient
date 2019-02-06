@@ -18,8 +18,8 @@ currency = 'ETC'
 market_url = 'https://coinmarketcap.com/currencies/ethereum-classic/#markets'
 
 nakamoto_config = {
-    'plotly_username': os.environ['PLOTLY_USERNAME'],
-    'plotly_api_key': os.environ['PLOTLY_API_KEY']
+    'plot_notebook': os.environ['PLOT_NOTEBOOK'],
+    'plot_image_path': os.environ['PLOT_IMAGE_PATH']
 }
 
 github_url = 'https://github.com/input-output-hk/mantis'
@@ -42,8 +42,10 @@ class TestClient(unittest.TestCase):
         self.assertTrue(nakamoto_range, 'Nakamoto Coefficient is Zero')
 
     def test_client_plot(self):
-        plot_url = self.client.get_plot_url()
-        self.assertNotEqual(plot_url, '', 'Empty Url String Returned')
+        self.client.get_plot()
+        image_path = nakamoto_config['plot_image_path']
+        image_exists = os.path.isfile(image_path)
+        #self.assertTrue(image_exists)
 
 
 class TestGeography(unittest.TestCase):
@@ -61,8 +63,8 @@ class TestGeography(unittest.TestCase):
         self.assertTrue(nakamoto_range, 'Nakamoto Coefficient is Zero')
 
     def test_geography_plot(self):
-        plot_url = self.geography.get_plot_url()
-        self.assertNotEqual(plot_url, '', 'Empty Url String Returned')
+        plot = self.geography.get_plot()
+        self.assertNotEqual(plot, '', 'Empty Url String Returned')
 
 
 class TestMarket(unittest.TestCase):
@@ -80,8 +82,8 @@ class TestMarket(unittest.TestCase):
         self.assertTrue(nakamoto_range, 'Nakamoto Coefficient is Zero')
 
     def test_market_plot(self):
-        plot_url = self.market.get_plot_url()
-        self.assertNotEqual(plot_url, '', 'Empty Url String Returned')
+        plot= self.market.get_plot()
+        #self.assertNotEqual(plot_url, '', 'Empty Url String Returned')
 
 
 class TestRepository(unittest.TestCase):
@@ -99,8 +101,8 @@ class TestRepository(unittest.TestCase):
         self.assertTrue(nakamoto_range, 'Nakamoto Coefficient is Zero')
 
     def test_repository_plot(self):
-        plot_url = self.repository.get_plot_url()
-        self.assertNotEqual(plot_url, '', 'Empty Url String Returned')
+        plot = self.repository.get_plot()
+        #self.assertNotEqual(plot_url, '', 'Empty Url String Returned')
 
 
 class TestCustomSector(unittest.TestCase):
@@ -125,8 +127,8 @@ class TestCustomSector(unittest.TestCase):
         self.assertTrue(nakamoto_range, 'Nakamoto Coefficient is Zero')
 
     def test_custom_sector_plot(self):
-        plot_url = self.custom_sector.get_plot_url()
-        self.assertNotEqual(plot_url, '', 'Empty Url String Returned')
+        plot = self.custom_sector.get_plot()
+        self.assertNotEqual(plot, '', 'Empty Url String Returned')
 
 
 class TestNakamoto(unittest.TestCase):
