@@ -1,4 +1,5 @@
-# ![nakamoto logo](https://s3.amazonaws.com/occupied-mars/crypto/logo.png) Nakamoto: A Python Library for Quantifying Decentralization
+# ![nakamoto logo](https://s3.amazonaws.com/occupied-mars/crypto/logo.png) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FYazzyYaz%2Fnakamoto-coefficient.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FYazzyYaz%2Fnakamoto-coefficient?ref=badge_shield)
+Nakamoto: A Python Library for Quantifying Decentralization
 
 A Python library for measuring the Nakamoto Coefficient of a Sector.
 Based on the post ["Quantifying Dectralization"](https://news.earn.com/quantifying-decentralization-e39db233c28e?gi=26ec1a01794a)
@@ -202,3 +203,7 @@ nakamoto.get_summary()
 ```
 
 ![nakamoto summary](https://s3.amazonaws.com/occupied-mars/crypto/summary.png)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FYazzyYaz%2Fnakamoto-coefficient.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FYazzyYaz%2Fnakamoto-coefficient?ref=badge_large)
